@@ -1,14 +1,14 @@
-// LøberLab Skadefinder Widget v1.0
+// LøberLab Skadefinder Widget v1.1
 // Self-contained - injects CSS, HTML and runs automatically
 (function() {
   // Inject CSS
   var style = document.createElement('style');
-  style.textContent = ".ll-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease}.ll-modal-overlay.active{opacity:1;visibility:visible}.ll-modal-container{position:relative;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);transform:scale(0.95) translateY(20px);transition:transform 0.3s ease}.ll-modal-overlay.active .ll-modal-container{transform:scale(1) translateY(0)}.ll-modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#F7F8FA;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.2s ease}.ll-modal-close:hover{background:#E0E2E6}.ll-trigger-wrapper{display:flex;justify-content:center;margin:32px 0}.ll-trigger-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#EEFA70;color:#21232C;border:none;border-radius:12px;font-family:'Albert Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 12px rgba(0,0,0,0.1)}.ll-trigger-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(238,250,112,0.5)}.ll-skadefinder *{box-sizing:border-box;margin:0;padding:0;font-family:'Albert Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}.ll-skadefinder{padding:24px;background-color:#FFF;border-radius:16px}.ll-container{max-width:448px;margin:0 auto}.ll-card{padding:0;border-radius:0;background-color:transparent;border:none}.ll-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #E0E2E6}.ll-logo-box{width:40px;height:40px;border-radius:8px;background-color:#EEFA70;display:flex;align-items:center;justify-content:center}.ll-header-text h1{font-size:16px;font-weight:600;color:#21232C;margin:0;letter-spacing:0.3px}.ll-header-text p{font-size:12px;color:#535865;margin:0}.ll-progress{margin-bottom:24px}.ll-progress-bar{height:4px;border-radius:4px;background-color:#E0E2E6}.ll-progress-fill{height:100%;border-radius:4px;background-color:#407A95;transition:width 0.3s ease}.ll-step-title{font-size:20px;font-weight:600;color:#21232C;margin-bottom:4px}.ll-step-desc{font-size:14px;color:#535865;margin-bottom:24px}.ll-options{display:flex;flex-direction:column;gap:8px}.ll-options.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ll-option{width:100%;padding:12px;text-align:left;border-radius:8px;background-color:#F7F8FA;border:1px solid #E0E2E6;cursor:pointer;transition:all 0.2s ease}.ll-option:hover{border-color:#535865;background-color:#EBEDF0}.ll-option.selected{background-color:#E8F4F8;border-color:#407A95}.ll-option-label{font-size:14px;font-weight:500;color:#21232C}.ll-option-desc{font-size:12px;color:#535865;margin-top:2px}.ll-option-icon{font-size:18px;margin-right:8px}.ll-option-check{width:20px;height:20px;border-radius:50%;background-color:#407A95;display:flex;align-items:center;justify-content:center;margin-left:auto}.ll-option-row{display:flex;align-items:center;justify-content:space-between}.ll-btn{width:100%;padding:12px;border-radius:50px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;border:none;transition:opacity 0.2s ease}.ll-btn-primary{background-color:#EEFA70;color:#21232C}.ll-btn-primary:disabled{opacity:0.4;cursor:not-allowed}.ll-btn-dark{background-color:#21232C;color:#FFF}.ll-btn-back{background:none;border:none;font-size:14px;color:#407A95;cursor:pointer;margin-top:12px;padding:8px}.ll-btn-link{background:none;border:none;font-size:14px;color:#407A95;cursor:pointer;width:100%;text-align:center;margin-top:12px}.ll-result-box{padding:20px;border-radius:12px;background-color:#F7F8FA;margin-bottom:16px}.ll-match-badge{display:inline-block;padding:2px 8px;border-radius:50px;background-color:#EEFA70;color:#21232C;font-size:12px;margin-bottom:12px}.ll-result-name{font-size:24px;font-weight:700;color:#21232C;margin-bottom:4px}.ll-result-fullname{font-size:14px;color:#535865;margin-bottom:12px}.ll-result-desc{font-size:14px;color:#21232C}.ll-other-matches{margin-bottom:24px}.ll-other-label{font-size:12px;color:#535865;margin-bottom:8px}.ll-other-tags{display:flex;flex-wrap:wrap;gap:8px}.ll-other-tag{font-size:12px;padding:4px 8px;border-radius:50px;background-color:#FFF;border:1px solid #E0E2E6;color:#535865}.ll-prognosis-number{font-size:36px;font-weight:700;color:#21232C;text-align:center}.ll-prognosis-unit{font-size:16px;color:#21232C;text-align:center;margin-bottom:16px}.ll-bento-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.ll-bento-card{padding:12px;border-radius:10px;background-color:#F7F8FA}.ll-bento-label{font-size:11px;color:#535865;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.3px}.ll-bento-value{font-size:14px;font-weight:600;color:#21232C}.ll-lead-box{padding:16px;border-radius:8px;background-color:rgba(238,250,112,0.15);border:1px solid #EEFA70;margin-bottom:16px}.ll-lead-title{font-size:14px;font-weight:500;color:#21232C;margin-bottom:4px}.ll-lead-desc{font-size:12px;color:#535865;margin-bottom:12px}.ll-input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #E0E2E6;background-color:#FFF;font-size:14px;margin-bottom:8px}.ll-input:focus{outline:none;border-color:#407A95}.ll-input-row{display:flex;gap:8px}.ll-input-row .ll-input{flex:1}.ll-select{appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23535865' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}.ll-input-hint{font-size:11px;color:#535865;margin:4px 0 12px 0}.ll-booking-box{padding:16px;border-radius:8px;background-color:#21232C;margin-bottom:16px}.ll-booking-title{font-size:14px;font-weight:500;color:#FFF;margin-bottom:4px}.ll-booking-desc{font-size:12px;color:#E0E2E6;margin-bottom:12px}.ll-disclaimer{font-size:12px;color:#535865;text-align:center;margin-bottom:16px}.ll-success-box{padding:16px;border-radius:8px;background-color:#F7F8FA;margin-bottom:16px;display:flex;align-items:center;gap:12px}.ll-success-icon{width:32px;height:32px;border-radius:50%;background-color:#407A95;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ll-success-text h4{font-size:14px;font-weight:500;color:#21232C;margin:0}.ll-success-text p{font-size:12px;color:#535865;margin:0}.ll-center{text-align:center}.ll-mb-4{margin-bottom:16px}.ll-mb-6{margin-bottom:24px}.ll-mt-4{margin-top:16px}.ll-mt-6{margin-top:24px}.ll-hidden{display:none!important}.ll-body-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:8px 0}.ll-body-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px 16px;background:#fff;border:1px solid #E0E2E6;border-radius:12px;cursor:pointer;transition:all 0.2s ease}.ll-body-btn:hover{border-color:#407A95;background:#F7F8FA;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}.ll-body-btn:active{transform:translateY(0)}.ll-body-icon{font-size:32px;line-height:1}.ll-body-label{font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:500;color:#21232C}.ll-demo-box{padding:16px;border-radius:8px;background-color:#F7F8FA;margin-bottom:16px}.ll-demo-title{font-size:14px;font-weight:500;color:#21232C;margin-bottom:4px}.ll-demo-desc{font-size:12px;color:#535865;margin-bottom:12px}.ll-consent{display:flex;align-items:flex-start;gap:8px;margin:12px 0}.ll-consent input[type=\"checkbox\"]{width:18px;height:18px;margin-top:2px;accent-color:#407A95;cursor:pointer;flex-shrink:0}.ll-consent label{font-size:11px;color:#535865;line-height:1.4;cursor:pointer}.ll-btn-dark:disabled{opacity:0.4;cursor:not-allowed}.ll-btn-row{display:flex;gap:8px}.ll-btn-row .ll-btn{flex:1}.ll-btn-secondary{background-color:#F7F8FA;color:#21232C;border:1px solid #E0E2E6}.ll-btn-secondary:hover{background-color:#EBEDF0}.ll-btn-secondary:disabled{opacity:0.4;cursor:not-allowed}.ll-plan-list{display:flex;flex-direction:column;gap:0;margin-bottom:20px}.ll-plan-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #E0E2E6}.ll-plan-item:last-child{border-bottom:none}.ll-plan-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}.ll-plan-icon.unlocked{background-color:#E8F4F8;color:#407A95}.ll-plan-icon.locked{background-color:#F7F8FA;color:#535865}.ll-plan-text{flex:1}.ll-plan-label{font-size:13px;font-weight:600;color:#21232C;margin-bottom:2px}.ll-plan-detail{font-size:12px;color:#535865;line-height:1.4}.ll-plan-item.blurred .ll-plan-text{filter:blur(5px);user-select:none;pointer-events:none}.ll-plan-item.blurred .ll-plan-label,.ll-plan-item.blurred .ll-plan-detail{color:#535865}.ll-unlock-box{padding:20px;border-radius:12px;background:linear-gradient(135deg,rgba(238,250,112,0.15) 0%,rgba(64,122,149,0.08) 100%);border:1px solid #EEFA70;margin-bottom:16px;text-align:center}.ll-unlock-title{font-size:16px;font-weight:600;color:#21232C;margin-bottom:4px}.ll-unlock-desc{font-size:13px;color:#535865;margin-bottom:16px}.ll-email-row{display:flex;gap:8px}.ll-email-row .ll-input{flex:1;margin-bottom:0}.ll-email-row .ll-btn{width:auto;padding:10px 20px;white-space:nowrap;border-radius:8px}.ll-consent-mini{font-size:10px;color:#535865;margin-top:8px;line-height:1.3;text-align:left}.ll-consent-mini a{color:#407A95;text-decoration:underline}.ll-upsell-box{padding:24px;border-radius:12px;background-color:#FFF;border:1px solid #E0E2E6;margin-bottom:16px}.ll-upsell-stat{display:flex;align-items:center;gap:10px;padding:12px;border-radius:8px;background-color:#FFF8E8;margin-bottom:16px}.ll-upsell-stat-icon{font-size:20px;flex-shrink:0}.ll-upsell-stat-text{font-size:13px;color:#21232C;font-weight:500;line-height:1.4}.ll-upsell-features{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.ll-upsell-feature{display:flex;align-items:center;gap:10px;font-size:13px;color:#21232C}.ll-upsell-feature-icon{width:20px;height:20px;border-radius:50%;background-color:#E8F4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ll-btn-skip{background:none;border:none;font-size:12px;color:#535865;cursor:pointer;width:100%;text-align:center;margin-top:12px;padding:8px;opacity:0.7;transition:opacity 0.2s}.ll-btn-skip:hover{opacity:1}.ll-prognosis-highlight{display:inline-block;padding:4px 12px;border-radius:50px;background-color:rgba(238,250,112,0.3);color:#21232C;font-size:13px;font-weight:500;margin-top:8px;margin-bottom:16px}.ll-plan-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}.ll-plan-week{font-size:11px;color:#407A95;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}";
+  style.textContent = ".ll-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease}.ll-modal-overlay.active{opacity:1;visibility:visible}.ll-modal-container{position:relative;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;border-radius:16px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);transform:scale(0.95) translateY(20px);transition:transform 0.3s ease}.ll-modal-overlay.active .ll-modal-container{transform:scale(1) translateY(0)}.ll-modal-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:#F7F8FA;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.2s ease}.ll-modal-close:hover{background:#E0E2E6}.ll-trigger-wrapper{display:flex;justify-content:center;margin:32px 0}.ll-trigger-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;background:#EEFA70;color:#21232C;border:none;border-radius:12px;font-family:'Albert Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 12px rgba(0,0,0,0.1)}.ll-trigger-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(238,250,112,0.5)}.ll-skadefinder *{box-sizing:border-box;margin:0;padding:0;font-family:'Albert Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}.ll-skadefinder{padding:24px;background-color:#FFF;border-radius:16px}.ll-container{max-width:448px;margin:0 auto}.ll-card{padding:0;border-radius:0;background-color:transparent;border:none}.ll-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #E0E2E6}.ll-logo-box{width:40px;height:40px;border-radius:8px;background-color:#EEFA70;display:flex;align-items:center;justify-content:center}.ll-header-text h1{font-size:16px;font-weight:600;color:#21232C;margin:0;letter-spacing:0.3px}.ll-header-text p{font-size:12px;color:#535865;margin:0}.ll-progress{margin-bottom:24px}.ll-progress-bar{height:4px;border-radius:4px;background-color:#E0E2E6}.ll-progress-fill{height:100%;border-radius:4px;background-color:#407A95;transition:width 0.3s ease}.ll-step-title{font-size:20px;font-weight:600;color:#21232C;margin-bottom:4px}.ll-step-desc{font-size:14px;color:#535865;margin-bottom:24px}.ll-options{display:flex;flex-direction:column;gap:8px}.ll-options.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ll-option{width:100%;padding:12px;text-align:left;border-radius:8px;background-color:#F7F8FA;border:1px solid #E0E2E6;cursor:pointer;transition:all 0.2s ease}.ll-option:hover{border-color:#535865;background-color:#EBEDF0}.ll-option.selected{background-color:#E8F4F8;border-color:#407A95}.ll-option-label{font-size:14px;font-weight:500;color:#21232C}.ll-option-desc{font-size:12px;color:#535865;margin-top:2px}.ll-option-icon{font-size:18px;margin-right:8px}.ll-option-check{width:20px;height:20px;border-radius:50%;background-color:#407A95;display:flex;align-items:center;justify-content:center;margin-left:auto}.ll-option-row{display:flex;align-items:center;justify-content:space-between}.ll-btn{width:100%;padding:12px;border-radius:50px;font-size:14px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;border:none;transition:opacity 0.2s ease}.ll-btn-primary{background-color:#EEFA70;color:#21232C}.ll-btn-primary:disabled{opacity:0.4;cursor:not-allowed}.ll-btn-dark{background-color:#21232C;color:#FFF}.ll-btn-back{background:none;border:none;font-size:14px;color:#407A95;cursor:pointer;margin-top:12px;padding:8px}.ll-btn-link{background:none;border:none;font-size:14px;color:#407A95;cursor:pointer;width:100%;text-align:center;margin-top:12px}.ll-result-box{padding:20px;border-radius:12px;background-color:#F7F8FA;margin-bottom:16px}.ll-match-badge{display:inline-block;padding:2px 8px;border-radius:50px;background-color:#EEFA70;color:#21232C;font-size:12px;margin-bottom:12px}.ll-result-name{font-size:24px;font-weight:700;color:#21232C;margin-bottom:4px}.ll-result-fullname{font-size:14px;color:#535865;margin-bottom:12px}.ll-result-desc{font-size:14px;color:#21232C}.ll-other-matches{margin-bottom:24px}.ll-other-label{font-size:12px;color:#535865;margin-bottom:8px}.ll-other-tags{display:flex;flex-wrap:wrap;gap:8px}.ll-other-tag{font-size:12px;padding:4px 8px;border-radius:50px;background-color:#FFF;border:1px solid #E0E2E6;color:#535865}.ll-prognosis-number{font-size:36px;font-weight:700;color:#21232C;text-align:center}.ll-prognosis-unit{font-size:16px;color:#21232C;text-align:center;margin-bottom:16px}.ll-bento-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}.ll-bento-card{padding:12px;border-radius:10px;background-color:#F7F8FA}.ll-bento-label{font-size:11px;color:#535865;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.3px}.ll-bento-value{font-size:14px;font-weight:600;color:#21232C}.ll-lead-box{padding:16px;border-radius:8px;background-color:rgba(238,250,112,0.15);border:1px solid #EEFA70;margin-bottom:16px}.ll-lead-title{font-size:14px;font-weight:500;color:#21232C;margin-bottom:4px}.ll-lead-desc{font-size:12px;color:#535865;margin-bottom:12px}.ll-input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #E0E2E6;background-color:#FFF;font-size:14px;margin-bottom:8px}.ll-input:focus{outline:none;border-color:#407A95}.ll-input-row{display:flex;gap:8px}.ll-input-row .ll-input{flex:1}.ll-select{appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23535865' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}.ll-input-hint{font-size:11px;color:#535865;margin:4px 0 12px 0}.ll-booking-box{padding:16px;border-radius:8px;background-color:#21232C;margin-bottom:16px}.ll-booking-title{font-size:14px;font-weight:500;color:#FFF;margin-bottom:4px}.ll-booking-desc{font-size:12px;color:#E0E2E6;margin-bottom:12px}.ll-disclaimer{font-size:12px;color:#535865;text-align:center;margin-bottom:16px}.ll-success-box{padding:16px;border-radius:8px;background-color:#F7F8FA;margin-bottom:16px;display:flex;align-items:center;gap:12px}.ll-success-icon{width:32px;height:32px;border-radius:50%;background-color:#407A95;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ll-success-text h4{font-size:14px;font-weight:500;color:#21232C;margin:0}.ll-success-text p{font-size:12px;color:#535865;margin:0}.ll-center{text-align:center}.ll-mb-4{margin-bottom:16px}.ll-mb-6{margin-bottom:24px}.ll-mt-4{margin-top:16px}.ll-mt-6{margin-top:24px}.ll-hidden{display:none!important}.ll-body-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:8px 0}.ll-body-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:20px 16px;background:#fff;border:1px solid #E0E2E6;border-radius:12px;cursor:pointer;transition:all 0.2s ease}.ll-body-btn:hover{border-color:#407A95;background:#F7F8FA;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}.ll-body-btn:active{transform:translateY(0)}.ll-body-icon{font-size:32px;line-height:1}.ll-body-label{font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:500;color:#21232C}.ll-demo-box{padding:16px;border-radius:8px;background-color:#F7F8FA;margin-bottom:16px}.ll-demo-title{font-size:14px;font-weight:500;color:#21232C;margin-bottom:4px}.ll-demo-desc{font-size:12px;color:#535865;margin-bottom:12px}.ll-consent{display:flex;align-items:flex-start;gap:8px;margin:12px 0}.ll-consent input[type=\"checkbox\"]{width:18px;height:18px;margin-top:2px;accent-color:#407A95;cursor:pointer;flex-shrink:0}.ll-consent label{font-size:11px;color:#535865;line-height:1.4;cursor:pointer}.ll-btn-dark:disabled{opacity:0.4;cursor:not-allowed}.ll-btn-row{display:flex;gap:8px}.ll-btn-row .ll-btn{flex:1}.ll-btn-secondary{background-color:#F7F8FA;color:#21232C;border:1px solid #E0E2E6}.ll-btn-secondary:hover{background-color:#EBEDF0}.ll-btn-secondary:disabled{opacity:0.4;cursor:not-allowed}.ll-plan-list{display:flex;flex-direction:column;gap:0;margin-bottom:20px}.ll-plan-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #E0E2E6}.ll-plan-item:last-child{border-bottom:none}.ll-plan-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}.ll-plan-icon.unlocked{background-color:#E8F4F8;color:#407A95}.ll-plan-icon.locked{background-color:#F7F8FA;color:#535865}.ll-plan-text{flex:1}.ll-plan-label{font-size:13px;font-weight:600;color:#21232C;margin-bottom:2px}.ll-plan-detail{font-size:12px;color:#535865;line-height:1.4}.ll-plan-item.blurred .ll-plan-text{filter:blur(5px);user-select:none;pointer-events:none}.ll-plan-item.blurred .ll-plan-label,.ll-plan-item.blurred .ll-plan-detail{color:#535865}.ll-unlock-box{padding:20px;border-radius:12px;background:linear-gradient(135deg,rgba(238,250,112,0.15) 0%,rgba(64,122,149,0.08) 100%);border:1px solid #EEFA70;margin-bottom:16px;text-align:center}.ll-unlock-title{font-size:16px;font-weight:600;color:#21232C;margin-bottom:4px}.ll-unlock-desc{font-size:13px;color:#535865;margin-bottom:16px}.ll-email-row{display:flex;gap:8px}.ll-email-row .ll-input{flex:1;margin-bottom:0}.ll-email-row .ll-btn{width:auto;padding:10px 20px;white-space:nowrap;border-radius:8px}.ll-consent-mini{font-size:10px;color:#535865;margin-top:8px;line-height:1.3;text-align:left}.ll-consent-mini a{color:#407A95;text-decoration:underline}.ll-upsell-box{padding:24px;border-radius:12px;background-color:#FFF;border:1px solid #E0E2E6;margin-bottom:16px}.ll-upsell-stat{display:flex;align-items:center;gap:10px;padding:12px;border-radius:8px;background-color:#FFF8E8;margin-bottom:16px}.ll-upsell-stat-icon{font-size:20px;flex-shrink:0}.ll-upsell-stat-text{font-size:13px;color:#21232C;font-weight:500;line-height:1.4}.ll-upsell-features{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.ll-upsell-feature{display:flex;align-items:center;gap:10px;font-size:13px;color:#21232C}.ll-upsell-feature-icon{width:20px;height:20px;border-radius:50%;background-color:#E8F4F8;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ll-btn-skip{background:none;border:none;font-size:12px;color:#535865;cursor:pointer;width:100%;text-align:center;margin-top:12px;padding:8px;opacity:0.7;transition:opacity 0.2s}.ll-btn-skip:hover{opacity:1}.ll-prognosis-highlight{display:inline-block;padding:4px 12px;border-radius:50px;background-color:rgba(238,250,112,0.3);color:#21232C;font-size:13px;font-weight:500;margin-top:8px;margin-bottom:16px}.ll-plan-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}.ll-plan-week{font-size:11px;color:#407A95;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}";
   document.head.appendChild(style);
 
   // Inject HTML
   var div = document.createElement('div');
-  div.innerHTML = "<div class=\"ll-modal-overlay\" id=\"ll-modal-overlay\" onclick=\"window.llCloseModalOnOverlay(event)\">\n  <div class=\"ll-modal-container\">\n    <button class=\"ll-modal-close\" onclick=\"window.llCloseModal()\">\n      <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#535865\" stroke-width=\"2\">\n        <path d=\"M6 18L18 6M6 6l12 12\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    </button>\n    <div class=\"ll-skadefinder\" id=\"ll-skadefinder\">\n      <div class=\"ll-container\">\n        <div class=\"ll-card\">\n          <div class=\"ll-header\">\n            <div class=\"ll-logo-box\">\n              <svg width=\"24\" height=\"29\" viewBox=\"0 0 679 814\" fill=\"none\">\n                <g transform=\"translate(-141.039,-111.732)\">\n                  <g transform=\"matrix(8.31127,0,0,8.31127,99.1558,-1033)\">\n                    <path d=\"M64.353,235.663L54.023,235.663C52.919,235.663 52.023,234.767 52.023,233.663C52.023,232.558 52.919,231.663 54.023,231.663L62.943,231.663L81.842,178.685L54.023,178.685C52.919,178.685 52.023,177.79 52.023,176.685C52.023,175.581 52.919,174.685 54.023,174.685L84.679,174.685C85.329,174.685 85.938,175.002 86.313,175.533C86.688,176.064 86.781,176.745 86.562,177.357L66.237,234.335C65.953,235.132 65.199,235.663 64.353,235.663Z\" fill=\"#21232C\"/>\n                    <path d=\"M59.898,227.003L55.646,227.003L70.815,183.354L75.067,183.354L59.898,227.003Z\" fill=\"#21232C\"/>\n                    <path d=\"M79.348,170.03L47.859,170.03C46.755,170.03 45.859,169.134 45.859,168.03C45.859,166.925 46.755,166.03 47.859,166.03L79.348,166.03C80.452,166.03 81.348,166.925 81.348,168.03C81.348,169.134 80.452,170.03 79.348,170.03Z\" fill=\"#21232C\"/>\n                    <path d=\"M27.365,137.732L37.695,137.732C38.8,137.732 39.695,138.627 39.695,139.732C39.695,140.836 38.8,141.732 37.695,141.732L28.775,141.732L9.877,194.709L37.695,194.709C38.8,194.709 39.695,195.605 39.695,196.709C39.695,197.814 38.8,198.709 37.695,198.709L7.04,198.709C6.39,198.709 5.78,198.393 5.405,197.862C5.03,197.33 4.937,196.65 5.156,196.037L25.481,139.06C25.766,138.263 26.519,137.732 27.365,137.732Z\" fill=\"#21232C\"/>\n                    <path d=\"M31.821,146.391L36.072,146.391L20.903,190.041L16.652,190.041L31.821,146.391Z\" fill=\"#21232C\"/>\n                    <path d=\"M12.371,203.365L43.859,203.365C44.964,203.365 45.859,204.26 45.859,205.365C45.859,206.469 44.964,207.365 43.859,207.365L12.371,207.365C11.267,207.365 10.371,206.469 10.371,205.365C10.371,204.26 11.267,203.365 12.371,203.365Z\" fill=\"#21232C\"/>\n                  </g>\n                </g>\n              </svg>\n            </div>\n            <div class=\"ll-header-text\">\n              <h1>Skadefinder</h1>\n              <p>Find din løbeskade</p>\n            </div>\n          </div>\n          <div class=\"ll-progress\" id=\"ll-progress\">\n            <div class=\"ll-progress-bar\">\n              <div class=\"ll-progress-fill\" id=\"ll-progress-fill\"></div>\n            </div>\n          </div>\n          <div id=\"ll-step-content\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+  div.innerHTML = "<div class=\"ll-modal-overlay\" id=\"ll-modal-overlay\" onclick=\"window.llCloseModalOnOverlay(event)\">\n  <div class=\"ll-modal-container\" role=\"dialog\" aria-modal=\"true\" aria-label=\"LøberLab Skadefinder\">\n    <button class=\"ll-modal-close\" onclick=\"window.llCloseModal()\" aria-label=\"Luk\">\n      <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#535865\" stroke-width=\"2\">\n        <path d=\"M6 18L18 6M6 6l12 12\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n    </button>\n    <div class=\"ll-skadefinder\" id=\"ll-skadefinder\">\n      <div class=\"ll-container\">\n        <div class=\"ll-card\">\n          <div class=\"ll-header\">\n            <div class=\"ll-logo-box\">\n              <svg width=\"24\" height=\"29\" viewBox=\"0 0 679 814\" fill=\"none\">\n                <g transform=\"translate(-141.039,-111.732)\">\n                  <g transform=\"matrix(8.31127,0,0,8.31127,99.1558,-1033)\">\n                    <path d=\"M64.353,235.663L54.023,235.663C52.919,235.663 52.023,234.767 52.023,233.663C52.023,232.558 52.919,231.663 54.023,231.663L62.943,231.663L81.842,178.685L54.023,178.685C52.919,178.685 52.023,177.79 52.023,176.685C52.023,175.581 52.919,174.685 54.023,174.685L84.679,174.685C85.329,174.685 85.938,175.002 86.313,175.533C86.688,176.064 86.781,176.745 86.562,177.357L66.237,234.335C65.953,235.132 65.199,235.663 64.353,235.663Z\" fill=\"#21232C\"/>\n                    <path d=\"M59.898,227.003L55.646,227.003L70.815,183.354L75.067,183.354L59.898,227.003Z\" fill=\"#21232C\"/>\n                    <path d=\"M79.348,170.03L47.859,170.03C46.755,170.03 45.859,169.134 45.859,168.03C45.859,166.925 46.755,166.03 47.859,166.03L79.348,166.03C80.452,166.03 81.348,166.925 81.348,168.03C81.348,169.134 80.452,170.03 79.348,170.03Z\" fill=\"#21232C\"/>\n                    <path d=\"M27.365,137.732L37.695,137.732C38.8,137.732 39.695,138.627 39.695,139.732C39.695,140.836 38.8,141.732 37.695,141.732L28.775,141.732L9.877,194.709L37.695,194.709C38.8,194.709 39.695,195.605 39.695,196.709C39.695,197.814 38.8,198.709 37.695,198.709L7.04,198.709C6.39,198.709 5.78,198.393 5.405,197.862C5.03,197.33 4.937,196.65 5.156,196.037L25.481,139.06C25.766,138.263 26.519,137.732 27.365,137.732Z\" fill=\"#21232C\"/>\n                    <path d=\"M31.821,146.391L36.072,146.391L20.903,190.041L16.652,190.041L31.821,146.391Z\" fill=\"#21232C\"/>\n                    <path d=\"M12.371,203.365L43.859,203.365C44.964,203.365 45.859,204.26 45.859,205.365C45.859,206.469 44.964,207.365 43.859,207.365L12.371,207.365C11.267,207.365 10.371,206.469 10.371,205.365C10.371,204.26 11.267,203.365 12.371,203.365Z\" fill=\"#21232C\"/>\n                  </g>\n                </g>\n              </svg>\n            </div>\n            <div class=\"ll-header-text\">\n              <h1>Skadefinder</h1>\n              <p>Find din løbeskade</p>\n            </div>\n          </div>\n          <div class=\"ll-progress\" id=\"ll-progress\">\n            <div class=\"ll-progress-bar\">\n              <div class=\"ll-progress-fill\" id=\"ll-progress-fill\"></div>\n            </div>\n          </div>\n          <div id=\"ll-step-content\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
   while (div.firstChild) document.body.appendChild(div.firstChild);
 
   // Modal open/close (early definition)
@@ -168,7 +168,11 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       { id: 'push_off', l: 'Afsæt ved løb' },
       { id: 'tight_shoes', l: 'Stramme sko' },
       { id: 'morning_steps', l: 'Første skridt om morgenen' },
-      { id: 'calf_raise', l: 'Hæve sig på tæer' }
+      { id: 'calf_raise', l: 'Hæve sig på tæer' },
+      { id: 'uneven', l: 'Ujævnt underlag' },
+      { id: 'stairs_down', l: 'Trapper ned' },
+      { id: 'turning', l: 'Retningsskift' },
+      { id: 'stairs', l: 'Trapper' }
     ],
     lower_leg: [
       { id: 'running', l: 'Løb generelt' },
@@ -180,7 +184,13 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       { id: 'morning_steps', l: 'Første skridt' },
       { id: 'calf_raise', l: 'Hæve sig på tæer' },
       { id: 'stretching', l: 'Stræk af læggen' },
-      { id: 'touching', l: 'Tryk på området' }
+      { id: 'touching', l: 'Tryk på området' },
+      { id: 'uneven', l: 'Ujævnt underlag' },
+      { id: 'turning', l: 'Retningsskift' },
+      { id: 'stairs_down', l: 'Trapper ned' },
+      { id: 'stairs', l: 'Trapper' },
+      { id: 'first_steps', l: 'Første skridt efter hvile' },
+      { id: 'long_standing', l: 'Stå længe' }
     ],
     knee: [
       { id: 'stairs_down', l: 'Trapper ned' },
@@ -226,6 +236,52 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
   };
 
   // ============================================
+  // RED FLAGS (advarselstegn)
+  // ============================================
+  var RF = {
+    _common: [
+      { id: 'night_pain', l: 'Natsmerte der vækker mig' },
+      { id: 'fever', l: 'Feber eller almensymptomer' },
+      { id: 'weight_loss', l: 'Uforklaret vægttab' }
+    ],
+    back: [
+      { id: 'bladder_bowel', l: 'Ændret blære- eller tarmfunktion' },
+      { id: 'saddle_numbness', l: 'Følelsesløshed i skridtet' },
+      { id: 'progressive_weakness', l: 'Tiltagende svaghed i begge ben' }
+    ],
+    knee: [
+      { id: 'acute_swelling', l: 'Pludselig kraftig hævelse' },
+      { id: 'locking', l: 'Knæet låser eller giver efter' },
+      { id: 'no_weight_bear', l: 'Kan ikke støtte på benet' }
+    ],
+    hip: [
+      { id: 'acute_swelling', l: 'Pludselig kraftig hævelse' },
+      { id: 'no_weight_bear', l: 'Kan ikke støtte på benet' },
+      { id: 'groin_lump', l: 'Synlig hævelse eller knude i lysken' }
+    ],
+    foot: [
+      { id: 'acute_swelling', l: 'Pludselig kraftig hævelse' },
+      { id: 'no_weight_bear', l: 'Kan ikke støtte på foden' },
+      { id: 'discoloration', l: 'Misfarvning eller kraftig rødme' }
+    ],
+    lower_leg: [
+      { id: 'calf_swollen_red', l: 'Hævet, rød og varm læg (ét ben)' },
+      { id: 'no_weight_bear', l: 'Kan ikke støtte på benet' },
+      { id: 'acute_swelling', l: 'Pludselig kraftig hævelse' }
+    ],
+    thigh: [
+      { id: 'acute_swelling', l: 'Pludselig kraftig hævelse' },
+      { id: 'no_weight_bear', l: 'Kan ikke støtte på benet' },
+      { id: 'bruising', l: 'Kraftig misfarvning/blåmærke' }
+    ]
+  };
+
+  function getRedFlags(area) {
+    var specific = RF[area] || [];
+    return specific.concat(RF._common);
+  }
+
+  // ============================================
   // SKADEDATABASE
   // ============================================
   var I = [
@@ -235,31 +291,34 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     { id: 'pes_anserinus', n: 'Pes anserinus tendinopati', f: 'Pes anserinus bursit/tendinopati', a: 'knee', loc: ['inner'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'start'], on: ['gradual'], ag: ['stairs_down', 'stairs_up', 'running', 'sitting'], de: 'Smerte på indersiden af knæet.', w: { mild: 4, moderate: 8, severe: 12 } },
     { id: 'popliteus_injury', n: 'Knæhasesmerte', f: 'Popliteus tendinopati', a: 'knee', loc: ['back'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['hills_down', 'running', 'squatting'], de: 'Knæhasesmerte.', w: { mild: 4, moderate: 8, severe: 12 } },
     { id: 'shin_splints', n: 'Skinnebensbetændelse', f: 'Medial tibial stress syndrom', a: 'shin', loc: ['inner'], ch: ['dull', 'sharp'], ti: ['start', 'during'], on: ['gradual'], ag: ['running', 'hard_surface', 'jumping'], de: 'Skinnebenssmerter.', w: { mild: 6, moderate: 8, severe: 12 } },
-    { id: 'stress_fracture_shin', n: 'Stressfraktur i skinneben', f: 'Tibial stressfraktur', a: 'shin', loc: ['specific', 'front'], ch: ['sharp'], ti: ['during', 'always'], on: ['gradual'], ag: ['running', 'jumping', 'touching'], de: 'Stressbrud i knoglen.', w: { mild: 8, moderate: 12, severe: 20 } },
+    { id: 'stress_fracture_shin', n: 'Stressfraktur i skinneben', f: 'Tibial stressfraktur', a: 'shin', loc: ['specific', 'front'], ch: ['sharp'], ti: ['during', 'always'], on: ['gradual'], ag: ['running', 'jumping', 'touching'], de: 'Stressbrud i skinnebenet. Stop løb og søg læge – fortsat belastning kan forværre bruddet.', w: { mild: 8, moderate: 12, severe: 20 } },
     { id: 'calf_strain', n: 'Lægskade', f: 'Forstrækning af gastrocnemius/soleus', a: 'calf', loc: ['upper', 'middle'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['push_off', 'speed', 'jumping', 'stretching'], de: 'Lægmuskelskade.', w: { mild: 6, moderate: 8, severe: 12 } },
     { id: 'achilles_proximal', n: 'Proksimal akillestendinopati', f: 'Akillessene tendinopati (øvre del)', a: 'achilles', loc: ['upper'], ch: ['stiff', 'dull', 'sharp'], ti: ['morning', 'start', 'during'], on: ['gradual'], ag: ['morning_steps', 'hills_up', 'calf_raise', 'stretching'], de: 'Smerte øverst i akillessenen.', w: { mild: 10, moderate: 16, severe: 24 } },
-    { id: 'achilles_tendinopathy', n: 'Akillessenetendinopati', f: 'Akillessene tendinopati (midten)', a: 'achilles', loc: ['tendon'], ch: ['stiff', 'dull', 'sharp'], ti: ['morning', 'start'], on: ['gradual'], ag: ['morning_steps', 'hills', 'calf_raise'], de: 'Smerte midt på akillessenen.', w: { mild: 10, moderate: 16, severe: 24 } },
-    { id: 'achilles_insertional', n: 'Insertionel akillestendinopati', f: 'Insertionel akillessene tendinopati', a: 'achilles', loc: ['insertion'], ch: ['sharp', 'dull'], ti: ['morning', 'start', 'always'], on: ['gradual'], ag: ['morning_steps', 'hills', 'calf_raise'], de: 'Smerte nederst på akillessenen.', w: { mild: 12, moderate: 20, severe: 30 } },
-    { id: 'plantar_fasciitis', n: 'Plantar fasciitis', f: 'Plantar fasciopati', a: 'foot', loc: ['heel', 'arch'], ch: ['sharp', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['first_steps', 'barefoot', 'long_standing'], de: 'Hælsmerte.', w: { mild: 10, moderate: 18, severe: 28 } },
-    { id: 'metatarsal_stress', n: 'Stressfraktur i mellemfod', f: 'Metatarsal stressfraktur', a: 'foot', loc: ['forefoot', 'top'], ch: ['sharp'], ti: ['during', 'always'], on: ['gradual'], ag: ['push_off', 'long_standing'], de: 'Stressbrud i mellemfoden.', w: { mild: 8, moderate: 12, severe: 16 } },
+    { id: 'achilles_tendinopathy', n: 'Akillessenetendinopati', f: 'Akillessene tendinopati (midten)', a: 'achilles', loc: ['tendon'], ch: ['stiff', 'dull', 'sharp'], ti: ['morning', 'start'], on: ['gradual'], ag: ['morning_steps', 'hills_up', 'calf_raise'], de: 'Smerte midt på akillessenen.', w: { mild: 10, moderate: 16, severe: 24 } },
+    { id: 'achilles_insertional', n: 'Insertionel akillestendinopati', f: 'Insertionel akillessene tendinopati', a: 'achilles', loc: ['insertion'], ch: ['sharp', 'dull'], ti: ['morning', 'start', 'always'], on: ['gradual'], ag: ['morning_steps', 'hills_up', 'calf_raise'], de: 'Smerte nederst på akillessenen.', w: { mild: 12, moderate: 20, severe: 30 } },
+    { id: 'plantar_fasciitis', n: 'Plantar fasciitis', f: 'Plantar fasciopati', a: 'foot', loc: ['heel', 'arch'], ch: ['sharp', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['first_steps', 'barefoot', 'long_standing'], de: 'Hælsmerte – typisk værst ved første skridt om morgenen.', w: { mild: 10, moderate: 18, severe: 28 } },
+    { id: 'metatarsal_stress', n: 'Stressfraktur i mellemfod', f: 'Metatarsal stressfraktur', a: 'foot', loc: ['forefoot', 'top'], ch: ['sharp'], ti: ['during', 'always'], on: ['gradual'], ag: ['push_off', 'long_standing'], de: 'Stressbrud i mellemfoden. Stop løb og søg læge for vurdering og evt. billeddiagnostik.', w: { mild: 8, moderate: 12, severe: 16 } },
     { id: 'morton_neuroma', n: 'Mortons neurom', f: 'Interdigitalt neurom', a: 'foot', loc: ['toes'], ch: ['burning', 'sharp'], ti: ['during', 'always'], on: ['gradual'], ag: ['tight_shoes', 'push_off'], de: 'Nervesmerte i forfoden.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'metatarsalgia', n: 'Metatarsalgi', f: 'Forfodssmerter', a: 'foot', loc: ['forefoot'], ch: ['dull', 'burning'], ti: ['during', 'after'], on: ['gradual'], ag: ['long_standing', 'tight_shoes', 'barefoot', 'push_off'], de: 'Smerter under forfoden.', w: { mild: 4, moderate: 8, severe: 12 } },
     { id: 'extensor_tendinopathy', n: 'Fodrygssmerte', f: 'Ekstensor tendinopati', a: 'foot', loc: ['top'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['tight_shoes', 'push_off', 'long_standing'], de: 'Smerte på fodryggen.', w: { mild: 4, moderate: 6, severe: 10 } },
-    { id: 'hip_flexor_strain', n: 'Hoftefleksor-skade', f: 'Iliopsoas tendinopati', a: 'hip', loc: ['front'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['gradual', 'sudden'], ag: ['lifting_leg', 'stairs', 'running'], de: 'Smerte i lysken.', w: { mild: 6, moderate: 8, severe: 12 } },
+    { id: 'hip_flexor_strain', n: 'Hoftefleksor-skade', f: 'Iliopsoas forstrækning/tendinopati', a: 'hip', loc: ['front'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['gradual', 'sudden'], ag: ['lifting_leg', 'stairs', 'running'], de: 'Smerte i lysken.', w: { mild: 6, moderate: 8, severe: 12 } },
     { id: 'piriformis_syndrome', n: 'Dyb baldesmerte', f: 'Dyb gluteal smerte', a: 'hip', loc: ['back'], ch: ['dull', 'burning'], ti: ['always', 'after'], on: ['gradual'], ag: ['sitting', 'lying_on_side', 'stretching'], de: 'Dyb smerte i balden.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'greater_trochanteric', n: 'Hoftesmerter på siden', f: 'Greater trochanteric pain syndrome', a: 'hip', loc: ['side'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['lying_on_side', 'stairs', 'running'], de: 'Smerte på hoften.', w: { mild: 8, moderate: 14, severe: 20 } },
-    { id: 'hip_impingement', n: 'Hofteledssmerte', f: 'Femoroacetabulær impingement (FAI)', a: 'hip', loc: ['front', 'deep'], ch: ['sharp', 'dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['deep_squat', 'rotation', 'getting_in_car', 'sitting', 'clicking'], de: 'Hofteledssmerter.', w: { mild: 12, moderate: 20, severe: 30 } },
+    { id: 'hip_impingement', n: 'Smerter relateret til hofteledet', f: 'Hofteledsrelateret smerte (FAI, dysplasi m.fl.)', a: 'hip', loc: ['front', 'deep', 'side'], ch: ['sharp', 'dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['deep_squat', 'rotation', 'getting_in_car', 'sitting', 'clicking', 'running', 'stairs'], de: 'Smerte relateret til hofteledet. Kan skyldes FAI, dysplasi eller andre ledrelaterede tilstande – nærmere undersøgelse anbefales.', w: { mild: 12, moderate: 20, severe: 30 } },
     { id: 'hamstring_strain', n: 'Baglårsskade (distal)', f: 'Distal hamstring forstrækning', a: 'thigh', loc: ['back'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['sprinting', 'hills', 'stretching'], de: 'Baglårsskade.', w: { mild: 6, moderate: 8, severe: 14 } },
     { id: 'proximal_hamstring', n: 'Proksimal baglårsskade', f: 'Proksimal hamstring tendinopati', a: 'thigh', loc: ['back_upper'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['sitting', 'hills', 'stretching', 'sprinting'], de: 'Smerte øverst i baglåret.', w: { mild: 8, moderate: 16, severe: 30 } },
     { id: 'quad_strain', n: 'Forlårsskade', f: 'Quadriceps forstrækning', a: 'thigh', loc: ['front'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['kicking', 'hills', 'sprinting'], de: 'Forlårsskade.', w: { mild: 6, moderate: 8, severe: 12 } },
     { id: 'adductor_strain', n: 'Adduktorskade', f: 'Adduktor forstrækning/tendinopati', a: 'thigh', loc: ['inner'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['sprinting', 'stretching', 'kicking'], de: 'Inderlårssmerte.', w: { mild: 6, moderate: 8, severe: 14 } },
     { id: 'itb_thigh', n: 'IT-båndsspænding', f: 'Iliotibial bånd irritation (lår)', a: 'thigh', loc: ['outer'], ch: ['dull', 'stiff'], ti: ['during', 'after'], on: ['gradual'], ag: ['hills', 'sitting', 'stretching'], de: 'Stramhed på ydersiden.', w: { mild: 4, moderate: 8, severe: 12 } },
     { id: 'ankle_sprain', n: 'Forstuvet ankel', f: 'Lateral ankelforstuvning', a: 'ankle', loc: ['outer'], ch: ['sharp', 'dull'], ti: ['always', 'during'], on: ['sudden'], ag: ['uneven', 'turning'], de: 'Forstuvet ankel.', w: { mild: 6, moderate: 8, severe: 14 } },
-    { id: 'peroneal_tendinopathy', n: 'Peroneustendinopati', f: 'Peroneal tendinopati', a: 'ankle', loc: ['outer', 'back'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['uneven', 'turning', 'push_off'], de: 'Ydre ankelsmerte.', w: { mild: 6, moderate: 10, severe: 16 } },
+    { id: 'peroneal_tendinopathy', n: 'Peroneustendinopati', f: 'Peroneal tendinopati', a: 'ankle', loc: ['outer'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['uneven', 'turning', 'push_off'], de: 'Ydre ankelsmerte.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'posterior_tibialis', n: 'Posterior tibialis tendinopati', f: 'Tibialis posterior tendinopati', a: 'ankle', loc: ['inner'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['push_off', 'stairs', 'uneven'], de: 'Indre ankelsmerte.', w: { mild: 6, moderate: 12, severe: 20 } },
     { id: 'lower_back_pain', n: 'Lænderygsmerte', f: 'Uspecifik lænderygsmerte', a: 'back', loc: ['lower_center', 'lower_side'], ch: ['dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['running', 'sitting', 'bending', 'standing', 'morning_stiff'], de: 'Smerte i lænden.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'si_joint_dysfunction', n: 'SI-ledsdysfunktion', f: 'Sakroiliakal ledsdysfunktion', a: 'back', loc: ['si_joint', 'lower_side'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['running', 'standing', 'hills', 'sitting'], de: 'SI-ledssmerte.', w: { mild: 6, moderate: 10, severe: 16 } },
-    { id: 'lumbar_disc', n: 'Diskuspåvirkning', f: 'Lumbal diskusaffektion', a: 'back', loc: ['lower_center', 'radiating'], ch: ['sharp', 'burning'], ti: ['always', 'during'], on: ['sudden', 'gradual'], ag: ['bending', 'sitting', 'coughing', 'morning_stiff'], de: 'Smerte med udstråling.', w: { mild: 10, moderate: 18, severe: 30 } }
+    { id: 'lumbar_disc', n: 'Diskuspåvirkning', f: 'Lumbal diskusaffektion', a: 'back', loc: ['lower_center', 'radiating'], ch: ['sharp', 'burning'], ti: ['always', 'during'], on: ['sudden', 'gradual'], ag: ['bending', 'sitting', 'coughing', 'morning_stiff'], de: 'Smerte med udstråling til ben. Søg akut læge ved blære-/tarmforstyrrelser, følelsesløshed i skridtet eller tiltagende svaghed i benene.', w: { mild: 10, moderate: 18, severe: 30 } },
+    { id: 'knee_arthrosis', n: 'Knæartrose', f: 'Artrose i knæleddet', a: 'knee', loc: ['front', 'inner', 'outer'], ch: ['dull', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['stairs_down', 'sitting', 'squatting', 'better_warmup'], de: 'Kronisk ledsmerte med morgenstivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 40 } },
+    { id: 'hip_arthrosis', n: 'Hofteartrose', f: 'Artrose i hofteleddet', a: 'hip', loc: ['front', 'deep', 'side'], ch: ['dull', 'stiff'], ti: ['morning', 'start', 'always'], on: ['gradual'], ag: ['sitting', 'deep_squat', 'rotation', 'getting_in_car', 'stairs'], de: 'Kronisk hoftesmerte med stivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 16, moderate: 24, severe: 52 } },
+    { id: 'ankle_arthrosis', n: 'Ankelartrose', f: 'Artrose i ankelleddet', a: 'ankle', loc: ['outer', 'inner'], ch: ['dull', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['morning_steps', 'first_steps', 'long_standing'], de: 'Kronisk ankelsmerte med stivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 36 } }
   ];
 
   // ============================================
@@ -270,18 +329,17 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     // Sene-skader (tendon)
     achilles_tendinopathy: 'tendon',
     achilles_insertional: 'tendon',
+    achilles_proximal: 'tendon',
     peroneal_tendinopathy: 'tendon',
-    tibialis_posterior: 'tendon',
+    posterior_tibialis: 'tendon',
     proximal_hamstring: 'tendon',
-    high_hamstring: 'tendon',
     patellar_tendinopathy: 'tendon',
-    gluteal_tendinopathy: 'tendon',
+    greater_trochanteric: 'tendon',
 
     // Knogle-stress (bone_stress)
     metatarsal_stress: 'bone_stress',
-    tibial_stress_fracture: 'bone_stress',
-    medial_tibial_stress: 'bone_stress',
-    calcaneal_stress: 'bone_stress',
+    stress_fracture_shin: 'bone_stress',
+    shin_splints: 'bone_stress',
 
     // Muskelskader (muscle)
     calf_strain: 'muscle',
@@ -293,26 +351,32 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
 
     // Knæ – forreste (knee_anterior)
     runners_knee: 'knee_anterior',
-    patellar_tendinopathy_alt: 'knee_anterior',
+    pes_anserinus: 'knee_anterior',
 
     // Knæ – lateralt (knee_lateral)
     itb_syndrome: 'knee_lateral',
+    popliteus_injury: 'knee_lateral',
+    itb_thigh: 'knee_lateral',
 
     // Led / brusk (joint)
-    ankle_impingement: 'joint',
-    ankle_sprain_chronic: 'joint',
-    meniscus_irritation: 'joint',
+    ankle_sprain: 'joint',
     hip_impingement: 'joint',
-    si_joint: 'joint',
 
     // Ryg (back)
     lower_back_pain: 'back',
-    disc_issue: 'back',
+    lumbar_disc: 'back',
+    si_joint_dysfunction: 'back',
 
     // Fod (foot)
     plantar_fasciitis: 'foot',
-    mortons_neuroma: 'foot',
-    hallux_rigidus: 'foot'
+    morton_neuroma: 'foot',
+    extensor_tendinopathy: 'foot',
+    metatarsalgia: 'foot',
+
+    // Artrose (arthrosis)
+    knee_arthrosis: 'arthrosis',
+    hip_arthrosis: 'arthrosis',
+    ankle_arthrosis: 'arthrosis'
   };
 
   // ---- 8 PLAN-TEMPLATES ----
@@ -382,6 +446,14 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       { week: '', label: 'Øvelser specifikt for din fod', detail: 'Short foot exercise, hælhævninger og towel curls – start i dag.', locked: true }
     ],
 
+    arthrosis: [
+      { week: 'Uge 1-2', label: 'Smertekontrol og tilpasset belastning', detail: 'Find dit sweet spot for løb. Start styrketræning 2-3×/uge. Brug lyskryds-modellen.', locked: false },
+      { week: '', label: 'Vær opmærksom på', detail: 'Morgenstivhed er normalt – det forbedres typisk efter 10-15 min opvarmning. Søg hjælp ved akut hævelse, natsmerte eller feber.', locked: false },
+      { week: 'Uge 3-6', label: 'Progressiv styrketræning', detail: 'Tung styrketræning 2-3×/uge er den mest effektive behandling for artrose. Progressiv belastning.', locked: true },
+      { week: 'Uge 7+', label: 'Struktureret løbeopbygning', detail: 'Start med 10-15 min, øg max 10-15% ugentligt. Variér underlag.', locked: true },
+      { week: '', label: 'Øvelser specifikt for dit led', detail: 'Målrettede styrkeøvelser for netop dit led – start i dag.', locked: true }
+    ],
+
     _default: [
       { week: 'Uge 1-2', label: 'Smertekontrol og tilpasset belastning', detail: 'Identificer smertefri bevægelser og start med let styrketræning.', locked: false },
       { week: '', label: 'Vær opmærksom på', detail: 'Aktiviteter der provokerer smerten, indtil symptomerne er under kontrol.', locked: false },
@@ -419,7 +491,9 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     leadInfo: { name: '', email: '' },
     leadSubmitted: false,
     guideSubmitted: false,
-    wantsCall: false
+    wantsCall: false,
+    redFlagCheck: null,
+    redFlagAnswers: []
   };
 
   // ============================================
@@ -465,11 +539,11 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     mx += 30; if (inj.loc.includes(ans.location)) sc += 30;
     mx += 15; if (inj.ch.includes(ans.character)) sc += 15;
     mx += 20; if (inj.ti.includes(ans.timing)) sc += 20;
-    mx += 25; if (inj.on.includes(ans.onset)) sc += 25;
+    mx += 15; if (inj.on.includes(ans.onset)) sc += 15;
     if (ans.aggravators && ans.aggravators.length > 0) {
-      mx += 10;
+      mx += 20;
       var mt = ans.aggravators.filter(function(x) { return inj.ag.includes(x); });
-      sc += (mt.length / ans.aggravators.length) * 10;
+      sc += (mt.length / ans.aggravators.length) * 20;
     }
     return Math.round((sc / mx) * 100);
   }
@@ -497,6 +571,8 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
   // ============================================
   // RENDER FUNKTIONER
   // ============================================
+  function esc(str) { var d = document.createElement('div'); d.textContent = str; return d.innerHTML; }
+
   function renderProgress() {
     var pe = document.getElementById('ll-progress');
     var fe = document.getElementById('ll-progress-fill');
@@ -602,7 +678,52 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       '<button class="ll-btn-back" onclick="window.llGoBack(5)">Tilbage</button>';
   }
 
+  function rRedFlag() {
+    var flags = getRedFlags(s.answers.area);
+    return '<h2 class="ll-step-title">Vigtig screening</h2>' +
+      '<p class="ll-step-desc">Oplever du nogen af disse symptomer?</p>' +
+      '<p style="font-size:12px;color:#535865;margin-bottom:16px">Vælg alle der passer – eller tryk videre hvis ingen passer</p>' +
+      '<div class="ll-options" id="ll-redflags">' +
+      flags.map(function(x) {
+        var sel = s.redFlagAnswers.indexOf(x.id) >= 0;
+        return '<button class="ll-option' + (sel ? ' selected' : '') + '" onclick="window.llToggleRedFlag(\'' + x.id + '\')" style="' + (sel ? 'border-color:#c0392b;background-color:#FFF5F5' : '') + '">' +
+          '<div class="ll-option-row"><span class="ll-option-label">' + x.l + '</span>' +
+          (sel ? '<div class="ll-option-check" style="background-color:#c0392b"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' : '') +
+          '</div></button>';
+      }).join('') + '</div>' +
+      '<button class="ll-btn ll-btn-primary ll-mt-6" onclick="window.llSubmitRedFlags()">Se resultat<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<button class="ll-btn-back" onclick="window.llGoBack(6)">Tilbage</button>';
+  }
+
+  function rRedFlagWarn() {
+    return '<div class="ll-center ll-mb-4">' +
+      '<div style="font-size:48px;margin-bottom:16px">&#9888;&#65039;</div>' +
+      '<h2 class="ll-step-title">Vi anbefaler professionel vurdering</h2>' +
+      '<p class="ll-step-desc">Dine svar indikerer symptomer der bør vurderes af en sundhedsprofessionel.</p></div>' +
+      '<div style="padding:16px;border-radius:8px;background-color:#FFF5F5;border:1px solid #e8c4c4;margin-bottom:16px">' +
+      '<p style="font-size:14px;font-weight:600;color:#21232C;margin-bottom:8px">Dine advarselstegn:</p>' +
+      '<ul style="font-size:13px;color:#535865;padding-left:20px;margin:0">' +
+      s.redFlagAnswers.map(function(id) {
+        var allFlags = getRedFlags(s.answers.area);
+        var flag = allFlags.find(function(f) { return f.id === id; });
+        return '<li style="margin-bottom:4px">' + (flag ? flag.l : id) + '</li>';
+      }).join('') +
+      '</ul></div>' +
+      '<div style="padding:16px;border-radius:8px;background-color:#E8F4F8;margin-bottom:16px">' +
+      '<p style="font-size:14px;color:#21232C;line-height:1.5">Disse symptomer <strong>kan</strong> være helt ufarlige, men de bør vurderes af en autoriseret sundhedsprofessionel for at udelukke alvorlige tilstande.</p></div>' +
+      '<div class="ll-booking-box">' +
+      '<p class="ll-booking-title">Tal med en fysioterapeut</p>' +
+      '<p class="ll-booking-desc">Gratis 15-min opkald – vi hjælper dig videre.</p>' +
+      '<button class="ll-btn ll-btn-primary" onclick="window.llBookCallRedFlag()">Book gratis opkald' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>' +
+      '<button class="ll-btn-link" onclick="window.llContinueDespiteRedFlag()" style="color:#535865;font-size:12px;margin-top:8px">Fortsæt til resultat alligevel</button>' +
+      '<button class="ll-btn-back" onclick="window.llGoBack(6)">Tilbage</button>';
+  }
+
   function rDiag() {
+    if (s.redFlagCheck === null) return rRedFlag();
+    if (s.redFlagCheck === true) return rRedFlagWarn();
+
     var top = s.results[0];
     var others = s.results.slice(1);
 
@@ -621,14 +742,15 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
 
     return '<div class="ll-center ll-mb-4"><p class="ll-step-desc">Baseret på dine svar</p></div>' +
       '<div class="ll-result-box">' +
-      '<span class="ll-match-badge">' + top.matchScore + '% match</span>' +
+      '<span class="ll-match-badge">' + top.matchScore + '% symptommatch</span>' +
       '<h2 class="ll-result-name">' + top.n + '</h2>' +
       '<p class="ll-result-fullname">' + top.f + '</p>' +
       '<p class="ll-result-desc">' + top.de + '</p></div>' +
       (others.length > 0 ?
         '<div class="ll-other-matches"><p class="ll-other-label">Evt. også:</p><div class="ll-other-tags">' +
-        others.map(function(x) { return '<span class="ll-other-tag">' + x.n + ' (' + x.matchScore + '%)</span>'; }).join('') +
+        others.map(function(x) { return '<span class="ll-other-tag">' + x.n + ' (' + x.matchScore + '% symptommatch)</span>'; }).join('') +
         '</div></div>' : '') +
+      '<p class="ll-disclaimer" style="margin-bottom:16px;text-align:left">⚠️ Denne vurdering er en indikation baseret på dine symptomer – ikke en diagnose. Match-procenten angiver hvor godt dine svar passer med typiske symptommønstre, ikke en diagnostisk sikkerhed. Søg altid professionel vurdering for at bekræfte.</p>' +
       '<button class="ll-btn ll-btn-primary" onclick="window.llGoToSeverity()">Se prognose' +
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
       '<button class="ll-btn-link" onclick="window.llReset()">Prøv igen</button>';
@@ -661,7 +783,7 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       '<option value="female"' + (s.gender === 'female' ? ' selected' : '') + '>Kvinde</option></select>' +
       '<input type="date" class="ll-input" id="ll-demo-birthdate" value="' + (s.birthdate || '') + '" onchange="window.llUpdateDemo()" max="2010-01-01" min="1930-01-01">' +
       '</div></div>' +
-      '<button class="ll-btn ll-btn-primary" onclick="window.llSubmitSeverity()" id="ll-severity-btn" disabled>Se prognose' +
+      '<button class="ll-btn ll-btn-primary" onclick="window.llSubmitSeverity()" id="ll-severity-btn"' + (s.severity && s.gender && s.birthdate ? '' : ' disabled') + '>Se prognose' +
       '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
       '<button class="ll-btn-back" onclick="window.llGoBack(7)">Tilbage</button>';
   }
@@ -680,12 +802,13 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     var durL = dur ? dur.label : '';
     var sevL = s.severity === 'mild' ? 'Let' : s.severity === 'moderate' ? 'Moderat' : 'Svær';
     var age = calcAge(s.birthdate);
+    var isArthrosis = (inj.id && inj.id.indexOf('arthrosis') !== -1);
 
     return '<div class="ll-center ll-mb-4">' +
-      '<p class="ll-step-desc">Estimeret genoptræning for ' + inj.n.toLowerCase() + '</p>' +
+      '<p class="ll-step-desc">' + (isArthrosis ? 'Tid til symptomforbedring for ' : 'Estimeret genoptræning for ') + inj.n.toLowerCase() + '</p>' +
       '<div class="ll-prognosis-number">' + minW + '–' + maxW + '</div>' +
-      '<p class="ll-prognosis-unit">uger</p>' +
-      '<span class="ll-prognosis-highlight">Med den rette indsats kan du forkorte det betragteligt</span></div>' +
+      '<p class="ll-prognosis-unit">' + (isArthrosis ? 'uger til mærkbar bedring' : 'uger') + '</p>' +
+      '<span class="ll-prognosis-highlight">Prognosen afhænger af individuelle faktorer som alder, varighed og træningshistorik</span></div>' +
       '<div class="ll-bento-grid">' +
       '<div class="ll-bento-card"><div class="ll-bento-label">Skade</div><div class="ll-bento-value">' + inj.n + '</div></div>' +
       '<div class="ll-bento-card"><div class="ll-bento-label">Påvirkning</div><div class="ll-bento-value">' + sevL + '</div></div>' +
@@ -743,7 +866,7 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     return '<div class="ll-success-box ll-mb-6">' +
       '<div class="ll-success-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
       '<div class="ll-success-text"><h4>Din plan er sendt!</h4>' +
-      '<p>Tjek din indbakke om et øjeblik, ' + s.leadInfo.name + '.</p></div></div>' +
+      '<p>Tjek din indbakke om et øjeblik, ' + esc(s.leadInfo.name) + '.</p></div></div>' +
 
       '<div class="ll-upsell-box">' +
       '<div class="ll-upsell-stat">' +
@@ -780,7 +903,7 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
       '</p></div>' +
       '<div class="ll-result-box">' +
       '<p class="ll-result-desc" style="text-align:center">Tip: Tjek også din spam-mappe hvis du ikke kan se mailen inden for et par minutter.</p></div>' +
-      '<p class="ll-disclaimer">Søg professionel rådgivning ved vedvarende smerter.</p>' +
+      '<p class="ll-disclaimer">Skadefinder er et vejledende værktøj og erstatter ikke en professionel klinisk undersøgelse. Søg altid autoriseret sundhedspersonale ved vedvarende eller forværrede symptomer.</p>' +
       '<button class="ll-btn-link" onclick="window.llReset()">Start forfra</button>';
   }
 
@@ -846,6 +969,39 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     render();
   };
 
+  window.llToggleRedFlag = function(id) {
+    var idx = s.redFlagAnswers.indexOf(id);
+    if (idx >= 0) s.redFlagAnswers.splice(idx, 1);
+    else s.redFlagAnswers.push(id);
+    render();
+  };
+
+  window.llSubmitRedFlags = function() {
+    if (s.redFlagAnswers.length > 0) {
+      s.redFlagCheck = true;
+      track('red_flag_triggered', { flags: s.redFlagAnswers.join(','), area: s.answers.area });
+    } else {
+      s.redFlagCheck = false;
+    }
+    render();
+  };
+
+  window.llContinueDespiteRedFlag = function() {
+    s.redFlagCheck = false;
+    track('red_flag_continued', { flags: s.redFlagAnswers.join(',') });
+    render();
+  };
+
+  window.llBookCallRedFlag = function() {
+    var top = s.results[0];
+    track('red_flag_call_booked', { flags: s.redFlagAnswers.join(','), injury: top ? top.id : null });
+    var url = new URL('https://www.loberlab.dk/skadefinder-confirmation');
+    url.searchParams.set('type', 'red_flag_call');
+    url.searchParams.set('flags', s.redFlagAnswers.join(','));
+    url.searchParams.set('area', s.answers.area || '');
+    window.open(url.toString(), '_blank');
+  };
+
   window.llGoToSeverity = function() { s.step = 8; render(); };
 
   window.llSelectSeverity = function(id) { s.severity = id; render(); };
@@ -892,6 +1048,7 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     var nm = document.getElementById('ll-lead-name').value;
     var em = document.getElementById('ll-lead-email').value;
     if (!nm || !em) return;
+    if (!/\S+@\S+\.\S+/.test(em)) return;
 
     s.leadInfo = { name: nm, email: em };
     s.guideSubmitted = true;
@@ -1008,14 +1165,20 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     window.location.href = url.toString();
   };
 
-  window.llGoBack = function(step) { s.step = step; render(); };
+  window.llGoBack = function(step) {
+    if (step <= 6) { s.redFlagCheck = null; s.redFlagAnswers = []; }
+    s.step = step;
+    render();
+  };
 
   window.llReset = function() {
     s = {
       step: 0,
+      sessionId: generateSessionId(),
       answers: { area: null, injuryArea: null, location: null, character: null, timing: null, onset: null, aggravators: [], duration: null },
       results: [], severity: null, gender: null, birthdate: null,
-      leadInfo: { name: '', email: '' }, leadSubmitted: false, guideSubmitted: false, wantsCall: false
+      leadInfo: { name: '', email: '' }, leadSubmitted: false, guideSubmitted: false, wantsCall: false,
+      redFlagCheck: null, redFlagAnswers: []
     };
     render();
   };
