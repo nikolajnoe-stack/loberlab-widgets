@@ -333,18 +333,20 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     greater_trochanteric: 'tendon',
     popliteus_injury: 'tendon',
     pes_anserinus: 'tendon',
+    plantar_fasciitis: 'tendon',
+    extensor_tendinopathy: 'tendon',
+    adductor_strain: 'tendon',
+    hip_flexor_strain: 'tendon',
+    shin_splints: 'tendon',
 
     // Knogle-stress (bone_stress)
     metatarsal_stress: 'bone_stress',
     stress_fracture_shin: 'bone_stress',
-    shin_splints: 'bone_stress',
 
     // Muskelskader (muscle)
     calf_strain: 'muscle',
     hamstring_strain: 'muscle',
     quad_strain: 'muscle',
-    adductor_strain: 'muscle',
-    hip_flexor_strain: 'muscle',
     piriformis_syndrome: 'muscle',
 
     // Knæ – forreste (knee_anterior)
@@ -364,9 +366,7 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     si_joint_dysfunction: 'back',
 
     // Fod (foot)
-    plantar_fasciitis: 'foot',
     morton_neuroma: 'foot',
-    extensor_tendinopathy: 'foot',
     metatarsalgia: 'foot',
 
     // Artrose (arthrosis)
