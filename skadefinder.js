@@ -199,7 +199,10 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     ],
     thigh: [
       { id: 'sprinting', l: 'Sprint/acceleration' },
-      { id: 'hills', l: 'Bakker' },
+      { id: 'hills', l: 'Bakker op' },
+      { id: 'hills_down', l: 'Bakker ned' },
+      { id: 'running', l: 'Løb generelt' },
+      { id: 'after_distance', l: 'Smerte efter bestemt distance' },
       { id: 'stretching', l: 'Stræk' },
       { id: 'kicking', l: 'Spark/afsæt' },
       { id: 'sitting', l: 'Sidde længe' }
@@ -296,8 +299,8 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     { id: 'extensor_tendinopathy', n: 'Fodrygssmerte', f: 'Ekstensor tendinopati', a: 'foot', loc: ['top'], ch: ['dull', 'sharp'], ti: ['during', 'after'], on: ['gradual'], ag: ['tight_shoes', 'push_off', 'long_standing'], de: 'Smerte på fodryggen.', w: { mild: 4, moderate: 6, severe: 10 } },
     { id: 'hip_flexor_strain', n: 'Hoftefleksor-skade', f: 'Iliopsoas forstrækning/tendinopati', a: 'hip', loc: ['front'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['gradual', 'sudden'], ag: ['lifting_leg', 'stairs', 'running'], de: 'Smerte i lysken.', w: { mild: 6, moderate: 8, severe: 12 } },
     { id: 'piriformis_syndrome', n: 'Dyb baldesmerte', f: 'Dyb gluteal smerte', a: 'hip', loc: ['back'], ch: ['dull', 'burning'], ti: ['always', 'after'], on: ['gradual'], ag: ['sitting', 'lying_on_side', 'stretching'], de: 'Dyb smerte i balden.', w: { mild: 6, moderate: 10, severe: 16 } },
-    { id: 'greater_trochanteric', n: 'Hoftesmerter på siden', f: 'Greater trochanteric pain syndrome', a: 'hip', loc: ['side'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['lying_on_side', 'stairs', 'running'], de: 'Smerte på hoften.', w: { mild: 8, moderate: 14, severe: 20 } },
-    { id: 'hip_impingement', n: 'Smerter relateret til hofteledet', f: 'Hofteledsrelateret smerte (FAI, dysplasi m.fl.)', a: 'hip', loc: ['front', 'deep', 'side'], ch: ['sharp', 'dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['deep_squat', 'rotation', 'getting_in_car', 'sitting', 'clicking', 'running', 'stairs'], de: 'Smerte relateret til hofteledet. Kan skyldes FAI, dysplasi eller andre ledrelaterede tilstande – nærmere undersøgelse anbefales.', w: { mild: 12, moderate: 20, severe: 30 } },
+    { id: 'greater_trochanteric', n: 'Hoftesmerter på siden', f: 'Greater trochanteric pain syndrome', a: 'hip', loc: ['side'], ch: ['dull', 'sharp', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['lying_on_side', 'stairs', 'running'], de: 'Smerte på hoften.', w: { mild: 8, moderate: 14, severe: 20 } },
+    { id: 'hip_impingement', n: 'Smerter relateret til hofteledet', f: 'Hofteledsrelateret smerte (FAI, dysplasi m.fl.)', a: 'hip', loc: ['front', 'deep'], ch: ['sharp', 'dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['deep_squat', 'rotation', 'getting_in_car', 'sitting', 'clicking', 'running', 'stairs'], de: 'Smerte relateret til hofteledet. Kan skyldes FAI, dysplasi eller andre ledrelaterede tilstande – nærmere undersøgelse anbefales.', w: { mild: 12, moderate: 20, severe: 30 } },
     { id: 'hamstring_strain', n: 'Baglårsskade (distal)', f: 'Distal hamstring forstrækning', a: 'thigh', loc: ['back'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['sprinting', 'hills', 'stretching'], de: 'Baglårsskade.', w: { mild: 6, moderate: 8, severe: 14 } },
     { id: 'proximal_hamstring', n: 'Proksimal baglårsskade', f: 'Proksimal hamstring tendinopati', a: 'thigh', loc: ['back_upper'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['sitting', 'hills', 'stretching', 'sprinting'], de: 'Smerte øverst i baglåret.', w: { mild: 8, moderate: 16, severe: 30 } },
     { id: 'quad_strain', n: 'Forlårsskade', f: 'Quadriceps forstrækning', a: 'thigh', loc: ['front'], ch: ['sharp', 'dull'], ti: ['during', 'after'], on: ['sudden', 'gradual'], ag: ['kicking', 'hills', 'sprinting'], de: 'Forlårsskade.', w: { mild: 6, moderate: 8, severe: 12 } },
@@ -309,8 +312,8 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     { id: 'lower_back_pain', n: 'Lænderygsmerte', f: 'Uspecifik lænderygsmerte', a: 'back', loc: ['lower_center', 'lower_side'], ch: ['dull', 'stiff'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['running', 'sitting', 'bending', 'standing', 'morning_stiff'], de: 'Smerte i lænden.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'si_joint_dysfunction', n: 'SI-ledsdysfunktion', f: 'Sakroiliakal ledsdysfunktion', a: 'back', loc: ['si_joint', 'lower_side'], ch: ['dull', 'sharp'], ti: ['during', 'after', 'always'], on: ['gradual'], ag: ['running', 'standing', 'hills', 'sitting'], de: 'SI-ledssmerte.', w: { mild: 6, moderate: 10, severe: 16 } },
     { id: 'lumbar_disc', n: 'Diskuspåvirkning', f: 'Lumbal diskusaffektion', a: 'back', loc: ['lower_center', 'radiating'], ch: ['sharp', 'burning'], ti: ['always', 'during'], on: ['sudden', 'gradual'], ag: ['bending', 'sitting', 'coughing', 'morning_stiff'], de: 'Smerte med udstråling til ben. Søg akut læge ved blære-/tarmforstyrrelser, følelsesløshed i skridtet eller tiltagende svaghed i benene.', w: { mild: 10, moderate: 18, severe: 30 } },
-    { id: 'knee_arthrosis', n: 'Knæartrose', f: 'Artrose i knæleddet', a: 'knee', loc: ['front', 'inner', 'outer'], ch: ['dull', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['stairs_down', 'sitting', 'squatting', 'better_warmup'], de: 'Kronisk ledsmerte med morgenstivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 40 } },
-    { id: 'hip_arthrosis', n: 'Hofteartrose', f: 'Artrose i hofteleddet', a: 'hip', loc: ['front', 'deep', 'side'], ch: ['dull', 'stiff'], ti: ['morning', 'start', 'always'], on: ['gradual'], ag: ['sitting', 'deep_squat', 'rotation', 'getting_in_car', 'stairs'], de: 'Kronisk hoftesmerte med stivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 16, moderate: 24, severe: 52 } },
+    { id: 'knee_arthrosis', n: 'Knæartrose', f: 'Artrose i knæleddet', a: 'knee', loc: ['front', 'inner'], ch: ['dull', 'stiff'], ti: ['morning', 'start', 'during'], on: ['gradual'], ag: ['stairs_down', 'sitting', 'squatting', 'better_warmup'], de: 'Kronisk ledsmerte med morgenstivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 40 } },
+    { id: 'hip_arthrosis', n: 'Hofteartrose', f: 'Artrose i hofteleddet', a: 'hip', loc: ['front', 'deep', 'side'], ch: ['dull', 'stiff'], ti: ['morning', 'start', 'always'], on: ['gradual'], ag: ['sitting', 'deep_squat', 'rotation', 'getting_in_car', 'stairs'], de: 'Kronisk hoftesmerte med stivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 36 } },
     { id: 'ankle_arthrosis', n: 'Ankelartrose', f: 'Artrose i ankelleddet', a: 'ankle', loc: ['outer', 'inner'], ch: ['dull', 'stiff'], ti: ['morning', 'start'], on: ['gradual'], ag: ['morning_steps', 'first_steps', 'long_standing'], de: 'Kronisk ankelsmerte med stivhed. Artrose er en langvarig tilstand der responderer godt på styrketræning og tilpasset belastning.', w: { mild: 12, moderate: 20, severe: 36 } }
   ];
 
@@ -328,6 +331,8 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     proximal_hamstring: 'tendon',
     patellar_tendinopathy: 'tendon',
     greater_trochanteric: 'tendon',
+    popliteus_injury: 'tendon',
+    pes_anserinus: 'tendon',
 
     // Knogle-stress (bone_stress)
     metatarsal_stress: 'bone_stress',
@@ -344,11 +349,9 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
 
     // Knæ – forreste (knee_anterior)
     runners_knee: 'knee_anterior',
-    pes_anserinus: 'knee_anterior',
 
     // Knæ – lateralt (knee_lateral)
     itb_syndrome: 'knee_lateral',
-    popliteus_injury: 'knee_lateral',
     itb_thigh: 'knee_lateral',
 
     // Led / brusk (joint)
@@ -571,27 +574,63 @@ window.llCloseModalOnOverlay = window.llCloseModalOnOverlay || function(e) {
     var sc = 0, mx = 0;
     if (inj.a !== ans.injuryArea) return 0;
     mx += 30; if (inj.loc.includes(ans.location)) sc += 30;
-    mx += 15; if (inj.ch.includes(ans.character)) sc += 15;
-    mx += 20; if (inj.ti.includes(ans.timing)) sc += 20;
+    var charGroups = { dull: 1, stiff: 1, sharp: 2, burning: 2 };
+    mx += 15;
+    if (inj.ch.includes(ans.character)) {
+      sc += 15;
+    } else {
+      var ug = charGroups[ans.character];
+      var hasGroup = ug && inj.ch.some(function(c) { return charGroups[c] === ug; });
+      if (hasGroup) sc += 8;
+    }
+    var timeGroups = { morning: 1, start: 1, during: 2, after_distance: 2, after: 2, always: 3 };
+    mx += 20;
+    if (inj.ti.includes(ans.timing)) {
+      sc += 20;
+    } else {
+      var utg = timeGroups[ans.timing];
+      var hasTimeGroup = utg && inj.ti.some(function(t) { return timeGroups[t] === utg; });
+      if (hasTimeGroup) sc += 10;
+    }
     mx += 15; if (inj.on.includes(ans.onset)) sc += 15;
     if (ans.aggravators && ans.aggravators.length > 0) {
       mx += 20;
       var mt = ans.aggravators.filter(function(x) { return inj.ag.includes(x); });
-      sc += (mt.length / ans.aggravators.length) * 20;
+      sc += (mt.length / inj.ag.length) * 20;
     }
     var pct = Math.round((sc / mx) * 100);
 
     // Alder-modifier: artrose er sjældent hos unge
     var isArthrosis = inj.id.indexOf('arthrosis') >= 0;
-    if (isArthrosis) {
-      var age = calcAge(s.birthdate);
-      if (age !== null) {
-        if (age < 35) pct = Math.round(pct * 0.3);       // 70% straf
-        else if (age < 45) pct = Math.round(pct * 0.6);   // 40% straf
-        else if (age < 55) pct = Math.round(pct * 0.85);  // 15% straf
-        // 55+ = fuld score
+    var age = calcAge(s.birthdate);
+    if (isArthrosis && age !== null) {
+      if (age < 35) pct = Math.round(pct * 0.3);
+      else if (age < 45) pct = Math.round(pct * 0.6);
+      else if (age < 55) pct = Math.round(pct * 0.85);
+      else if (age >= 65) pct = Math.round(pct * 1.15);
+    }
+    // Stressfrakturer: sjældnere hos ældre
+    if ((inj.id === 'metatarsal_stress' || inj.id === 'stress_fracture_shin') && age !== null && age > 50) {
+      pct = Math.round(pct * 0.8);
+    }
+    // Tendinopati: stiger med alder
+    if (['achilles_tendinopathy','achilles_proximal','achilles_insertional','proximal_hamstring','patellar_tendinopathy'].indexOf(inj.id) >= 0 && age !== null) {
+      if (age >= 40) pct = Math.round(pct * 1.1);
+      else if (age < 25) pct = Math.round(pct * 0.85);
+    }
+    // Kønsmodifiers
+    if (s.gender) {
+      if (s.gender === 'female' && (inj.id === 'metatarsal_stress' || inj.id === 'stress_fracture_shin')) {
+        pct = Math.round(pct * 1.25);
+      }
+      if (s.gender === 'female' && inj.id === 'runners_knee') {
+        pct = Math.round(pct * 1.15);
+      }
+      if (s.gender === 'male' && (inj.id === 'achilles_tendinopathy' || inj.id === 'achilles_proximal' || inj.id === 'achilles_insertional')) {
+        pct = Math.round(pct * 1.15);
       }
     }
+    if (pct > 100) pct = 100;
 
     return pct;
   }
