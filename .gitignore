@@ -1,1 +1,3 @@
 CLAUDE.md
+.tmp_*
+node_modules/
